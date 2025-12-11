@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: 780b3c099060f644bb2f61a69dec04d0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 229
+        width: 50
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1149c696a73f874fb3544bb047b8d40
+      internalID: -1356031521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 229
+        width: 54
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a03b3ca9654807448add5cfb1934c63
+      internalID: -1894661017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 225
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5567fbc0fed6044b8d332826ff20ef
+      internalID: 517273805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 224
+        width: 55
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63269519a45bf9442bff1e8ff1204a69
+      internalID: -856828223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 161
+        width: 55
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552e4a50d5fe44d4583d610d979098a9
+      internalID: -843271108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 163
+        width: 63
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ab6a63ee3c2d094c9e94a14c025399c
+      internalID: 97618147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 163
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebdb259cd1844748ab95cd26b1a9f3e
+      internalID: 1110932834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 148
+        width: 75
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51cb701920c791c4a87b59a72ba78a8b
+      internalID: 37212011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 78
+        width: 76
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b8b9865346de14eb9a18baacaef17a
+      internalID: 1688983933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 79
+        width: 74
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df44da605477c364aa1a8c4f7831e500
+      internalID: 621478281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 85
+        width: 70
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c44ee62d99828446b54a952618a485a
+      internalID: 1097766832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 91
+        width: 50
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b8d54e8fed32f40a43f624d4702224
+      internalID: 1835977112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 76
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a83ec89c17c933f47988013ad9cc2c4c
+      internalID: 64682077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 15
+        width: 73
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cadd9f76826d67441a085b900ce08dc4
+      internalID: -2025604703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 15
+        width: 72
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad60a6ca345543f45b641876926a9550
+      internalID: -1040785375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 15
+        width: 72
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e3e2dd00470f843b0fe86c532e34d7
+      internalID: -36836887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_3: -856828223
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_4: -843271108
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_15: -36836887
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_11: 1835977112
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_5: 97618147
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_7: 37212011
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_13: -2025604703
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_8: 1688983933
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_12: 64682077
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_2: 517273805
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_14: -1040785375
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_6: 1110932834
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_9: 621478281
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_0: -1356031521
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_1: -1894661017
+      188-1883234_flying-book-sprite-sheet-hd-png-download-removebg-preview_10: 1097766832
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
