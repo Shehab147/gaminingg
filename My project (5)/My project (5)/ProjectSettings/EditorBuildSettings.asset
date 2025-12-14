@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TimerEndedScene.unity
     guid: b02101537dd764911872deab1d53bf1d
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 5e8b34147233f47c0bba4d12759b1522
   m_configObjects: {}

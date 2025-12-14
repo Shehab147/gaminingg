@@ -58,7 +58,7 @@ public class LevelTimer : MonoBehaviour
 
     void TimeOver()
     {
-        SceneManager.LoadScene(5); // or use SceneManager.LoadScene(gameOverSceneName);
+        SceneManager.LoadScene(6); 
     }
 
     public void AddTime(float amount)

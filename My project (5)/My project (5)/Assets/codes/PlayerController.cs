@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;//to load gameover scene
 using UnityEngine.UI;        
 using TMPro;//added for heart bonus
 
@@ -218,10 +219,8 @@ public class PlayerController : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Game Over! No lives remaining.");
-        // You can add game over screen logic here
-        // For now, just reload the current scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(6); //opens gameover scene 
+
     }
 
     // Called by PuzzleManager when player makes too many mistakes
