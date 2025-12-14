@@ -19,6 +19,10 @@ public class NavigationController : MonoBehaviour
     {
         SceneManager.LoadScene(4); // Load Level 3 
     }
+    public void onClickRestartLevel()
+    {
+    SceneManager.LoadScene(1);
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -1,23 +1,31 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class LevelTimer : MonoBehaviour
 {
     public float startTime = 120f;
-    public TMPro.TMP_Text timerText;   
-    public PlayerController player; 
-    
-    public string gameOverSceneName = "GameOver";  // scene to load when time ends
-
+    public TMP_Text timerText;
+    public PlayerController player;
 
     float timeRemaining;
     bool timerRunning = true;
 
+    // ticking timer
+    public AudioSource tickSource;
+    public float halfPitch = 1.35f;
+    bool halfSpeedUpDone = false;
+
     void Start()
     {
         timeRemaining = startTime;
+
+        if (tickSource != null)
+        {
+            tickSource.loop = true;
+            tickSource.pitch = 1f;
+            if (!tickSource.isPlaying) tickSource.Play();
+        }
     }
 
     void Update()
@@ -26,20 +34,31 @@ public class LevelTimer : MonoBehaviour
 
         timeRemaining -= Time.deltaTime;
 
+        // half time -> speed up ticking ONCE
+        if (!halfSpeedUpDone && timeRemaining <= startTime / 2f)
+        {
+            halfSpeedUpDone = true;
+            if (tickSource != null)
+                tickSource.pitch = halfPitch;
+        }
+
+        // time over
         if (timeRemaining <= 0f)
         {
             timeRemaining = 0f;
             timerRunning = false;
-            TimeOver();  // call time over function
+            TimeOver();
         }
 
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
-        timerText.text = $"{minutes:00}:{seconds:00}";
+        if (timerText != null)
+            timerText.text = $"{minutes:00}:{seconds:00}";
     }
+
     void TimeOver()
     {
-        SceneManager.LoadScene(5);  // load retry scene
+        SceneManager.LoadScene(6); 
     }
 
     public void AddTime(float amount)
