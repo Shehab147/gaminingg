@@ -12,7 +12,7 @@ public class BonusTimer : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Add time to the timer (like coins add to score)
+            // Add time to the timer (like csoins add to score)
             LevelTimer timer = FindObjectOfType<LevelTimer>();
             if (timer != null)
             {
