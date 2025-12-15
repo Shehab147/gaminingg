@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    public bool canJump = true; // Can be disabled by external scripts like SimpleEdgeSlide
 
     // Health and lives system
     private float currentHealth = 100f;
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
         UpdateFacingDirection(moveInput);
 
         // Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && canJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
