@@ -17,9 +17,19 @@ public class PortalController : MonoBehaviour
 
     private bool isActive = true;
     private AudioSource audioSource;
+[Header("Lives")]
+public int maxLives = 3;
+public LivesTextUI livesUI;
+
+private int currentLives;
 
     void Start()
     {
+        currentLives = maxLives;
+
+if (livesUI != null)
+    livesUI.UpdateLives(currentLives);
+
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -62,7 +72,16 @@ public class PortalController : MonoBehaviour
     System.Collections.IEnumerator LoadNextLevel()
     {
         Debug.Log("Portal activated! Loading next level...");
-        yield return new WaitForSeconds(transitionDelay);
+        
+        // Wait for sound to play (ensure minimum delay for audio)
+        float waitTime = transitionDelay;
+        if (portalSound != null && audioSource != null)
+        {
+            // Ensure we wait at least for the sound clip length or transition delay
+            waitTime = Mathf.Max(transitionDelay, portalSound.length);
+        }
+        
+        yield return new WaitForSeconds(waitTime);
 
         // Load next level
         if (!string.IsNullOrEmpty(nextLevelName))

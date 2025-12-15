@@ -22,47 +22,55 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if we should collide with this object
-        if (((1 << other.gameObject.layer) & collisionLayers) != 0)
+        if (((1 << other.gameObject.layer) & collisionLayers) == 0)
+            return;
+
+        // ===== PLAYER HIT =====
+        if (other.CompareTag("Player"))
         {
-            // Check if it's the player
-            if (other.CompareTag("Player"))
+            // 🔊 Play hit sound from player
+            AudioSource hitSound = other.GetComponent<AudioSource>();
+            if (hitSound != null)
             {
-                PlayerController player = other.GetComponent<PlayerController>();
-                if (player != null)
-                {
-                    player.TakeDamage(damage);
-                    Debug.Log($"Arrow hit player for {damage} damage!");
-                }
+                hitSound.Play();
             }
 
-            // Play hit effect
-            if (hitEffect != null)
+            // Deal damage
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
             {
-                Instantiate(hitEffect, transform.position, Quaternion.identity);
+                player.TakeDamage(damage);
+                Debug.Log($"Arrow hit player for {damage} damage!");
             }
+        }
 
-            // Destroy projectile
-            if (destroyOnHit)
-            {
-                Destroy(gameObject);
-            }
+        // ===== HIT EFFECT =====
+        if (hitEffect != null)
+        {
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+        }
+
+        // ===== DESTROY PROJECTILE =====
+        if (destroyOnHit)
+        {
+            Destroy(gameObject);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Handle collisions with non-trigger colliders
-        if (((1 << collision.gameObject.layer) & collisionLayers) != 0)
-        {
-            if (hitEffect != null)
-            {
-                Instantiate(hitEffect, transform.position, Quaternion.identity);
-            }
+        if (((1 << collision.gameObject.layer) & collisionLayers) == 0)
+            return;
 
-            if (destroyOnHit)
-            {
-                Destroy(gameObject);
-            }
+        if (hitEffect != null)
+        {
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+        }
+
+        if (destroyOnHit)
+        {
+            Destroy(gameObject);
         }
     }
 }

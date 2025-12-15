@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BookPuzzleTrigger : MonoBehaviour
 {
-    [Header("Book Settings")]
-    public Animator bookAnimator;
-    public string openAnimation = "BookOpen";
-    public string closeAnimation = "BookClose";
-    private bool isBookOpen = false;
-    private bool playerInRange = false;
+    public GameObject puzzlePanel;
+    private bool hasTriggered = false;
+private AudioSource audioSource;
+void Start()
+{
+    if (puzzlePanel != null)
+        puzzlePanel.SetActive(false);
 
-    [Header("Puzzle Settings")]
-    public GameObject puzzleUI;
-    public PuzzleManager puzzleManager;
-    public TrapDoorController trapDoor;
+    audioSource = GetComponent<AudioSource>();
+}
 
     [Header("UI Prompt")]
     public GameObject interactPrompt;
@@ -129,23 +127,56 @@ public class BookPuzzleTrigger : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
+    if (other.CompareTag("Player") && !hasTriggered)
+{
+    hasTriggered = true;
+
+    // 🔊 Play puzzle sound
+    if (audioSource != null)
+        audioSource.Play();
+
+    puzzlePanel.SetActive(true);
+    Time.timeScale = 0f;
+
+    PuzzleTimer timer = puzzlePanel.GetComponent<PuzzleTimer>();
+    if (timer != null)
+        timer.StartTimer();
+}
+
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    // 🔹 REQUIRED by PuzzleManager & PuzzleManager_2
+    // Do NOT remove this
+    public void OnPuzzleSolved()
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
+        // Default behavior when puzzle system says "solved"
+        ClosePuzzle();
+    }
 
-            // Auto-close book if player moves away
-            if (isBookOpen)
-            {
-                CloseBook();
-            }
+ public void ClosePuzzle()
+{
+    PuzzleTimer timer = puzzlePanel.GetComponent<PuzzleTimer>();
+    if (timer != null)
+        timer.StopTimer();
+
+    puzzlePanel.SetActive(false);
+    Time.timeScale = 1f;
+}
+
+
+    // 🔘 NO button
+    public void RestartLevel()
+    {
+        // Respawn player (decrease life, etc) - handled by PuzzleManager on restart level function
+        Time.timeScale = 1f;
+        
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player != null)
+        {
+            player.DieFromPuzzle();
         }
+        
+        hasTriggered = false; // Reset trigger so puzzle can be reopened after respawn
+        ClosePuzzle();
     }
 }
