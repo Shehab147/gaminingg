@@ -17671,8 +17671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e6552d8c3a047be9501bac92d5d4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spec: {fileID: 223273559200550375, guid: a228047f4a0ac484ab389b8d8d2ba4a1, type: 3}
-  spawnp: {fileID: 1539249648}
 --- !u!58 &1539249647
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19528,11 +19526,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7318259485321906357, guid: 68f4ff02e0b856e4d897d426da34bada, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: -8.69
       objectReference: {fileID: 0}
     - target: {fileID: 7318259485321906357, guid: 68f4ff02e0b856e4d897d426da34bada, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -67.7
+      value: -52.45
       objectReference: {fileID: 0}
     - target: {fileID: 7318259485321906357, guid: 68f4ff02e0b856e4d897d426da34bada, type: 3}
       propertyPath: m_LocalPosition.z
