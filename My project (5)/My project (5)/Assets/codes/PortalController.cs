@@ -3,17 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class PortalController : MonoBehaviour
 {
-    [Header("Portal Settings")]
-    public string nextLevelName; // Enter exact scene name (e.g., "Level2")
-    public int nextLevelIndex = -1; // Alternative: Use build index
-    public float transitionDelay = 1f;
+    public int nextLevelIndex ; //based on buldsettings ,scene number 
 
-    [Header("Visual Effects")]
-    public ParticleSystem portalEffect;
-    public Animator portalAnimator;
+    public bool isActive = true;
 
-    [Header("Audio")]
-    public AudioClip portalSound;
+    
 
     private bool isActive = true;
     private AudioSource audioSource;
@@ -35,11 +29,10 @@ if (livesUI != null)
             audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && isActive)
+        if (other.CompareTag("Player"))
         {
-            EnterPortal(other.gameObject);
+            isActive = false;
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -97,4 +90,4 @@ if (livesUI != null)
             Debug.LogError("No level specified for portal!");
         }
     }
-}
+

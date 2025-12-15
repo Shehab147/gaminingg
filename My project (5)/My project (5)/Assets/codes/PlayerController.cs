@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
 
     private void GameOver()
     {
-            SceneManager.LoadScene(6); //opens gameover scene 
+        SceneManager.LoadScene(6); //opens gameover scene 
 
     }
 

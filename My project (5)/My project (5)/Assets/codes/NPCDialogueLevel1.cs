@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCDialogueLevel0 : MonoBehaviour
-
+public class NPCDialogueLevel1 : MonoBehaviour
 {
     public Dialogue dialogueManager; //a variable that stores the Dialogue script that is attached to the Dialogue Manager gameObject 
    
@@ -28,5 +27,6 @@ public class NPCDialogueLevel0 : MonoBehaviour
     }
 
 }
+
 
 
