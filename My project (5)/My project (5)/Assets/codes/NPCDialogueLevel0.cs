@@ -13,18 +13,13 @@ public class NPCDialogueLevel0 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "Player") //if the player is the one that triggers the collider, then
         { 
-            string[] dialogue = { "Echo: Ava...Welcome .... ",
-            "AVA: What is this place?",
-            "Echo: This is the Death Maze. Stay alert as time is counting down .Every Second Matters",
-            "AVA : WHAT!! AM GOING TO DIE ?",
-            "ECHO : CALM DOWN..AND FOCUS . Watch of moving platforms ,they wont wait for you ",
-            "AVA : OK.. WHAT ELSE !! ",
-            "Echo: Second .. you should break the wall to open different pathes .",
-            "AVA : I guess i can do that ",
-            "Echo : Choose wisely ,some paths have  objects to increase time or give you more lives ",
-            "Echo :  Few signs warns from  exploding traps , as well as flying spikes ",
-            "Echo :Final Surprise ...... You will face the MasterMind by the end make Sure to use your punches for a victory ",
-            "AVA: Sure its just a click of F .IM READY ",}; //specify the dialogue between the player and the character
+            string[] dialogue = { "AVA: Who are you ..",
+            "Echo: I am Echo , i will guide you. ",
+            "AVA : Where am i ??",
+            "ECHO : System Breach detected ... you were sucked inside this corrupted world  ",
+            "Echo : To return, you must reach the Core Server and fight the mastermind ",
+            "Ava: How ? ",
+            "Echo : Move forward, Ava. This is where it begins.” ",}; //specify the dialogue between the player and the character
             dialogueManager.SetSentences(dialogue); //set the sentences array in the Dialogue script to above array 
             dialogueManager.StartCoroutine(dialogueManager.TypeDialogue()); //start the coroutine of TypeDialogue), which in turn starts the dialogue
             Destroy (GetComponent<BoxCollider2D>(), 5f); //destroys the NPC's triggered box collider so
