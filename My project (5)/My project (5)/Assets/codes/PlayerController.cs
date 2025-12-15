@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;//to load gameover scene
-using UnityEngine.UI;        
-using TMPro;//added for heart bonus
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,11 +14,10 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    public bool canJump = true; // Can be disabled by external scripts like SimpleEdgeSlide
 
     // Health and lives system
     private float currentHealth = 100f;
-    public static int currentLives = 3;
+    private int currentLives = 3;
     private bool isDead = false;
     private Vector3 lastCheckpoint;
 
@@ -37,9 +33,6 @@ public class PlayerController : MonoBehaviour
     private bool isHurt = false;
     private bool isDying = false;
 
-    //UI heart bonus
-    public LivesTextUI livesTextUI;  
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,25 +40,15 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Store the original scale to prevent shrinking
-       
+        originalScale = transform.localScale;
         lastCheckpoint = transform.position; // Set initial checkpoint to starting position
-
-        // Initialize lives UI
-        if (livesTextUI != null)
-        {
-            livesTextUI.UpdateLives(currentLives);
-        }
 
         Debug.Log($"Player original scale: {originalScale}");
     }
 
     void Update()
     {
-        if (isDead || isDying)
-        {
-            return;
-        }
-
+        if (isDead || isDying) return;
 
         // Check if the player is grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -78,7 +61,7 @@ public class PlayerController : MonoBehaviour
         UpdateFacingDirection(moveInput);
 
         // Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded && canJump)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -94,12 +77,17 @@ public class PlayerController : MonoBehaviour
 
     void UpdateFacingDirection(float moveInput)
     {
-        if (spriteRenderer == null) return;
-        if (moveInput < -0.1f)        // moving left
-          spriteRenderer.flipX = true;
-        else if (moveInput > 0.1f)    // moving right
-            spriteRenderer.flipX = false;
-    
+        if (moveInput > 0.1f) // Moving right
+        {
+            // Use original scale but flip X to positive
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        }
+        else if (moveInput < -0.1f) // Moving left
+        {
+            // Use original scale but flip X to negative
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        }
+        // If moveInput is 0, maintain current facing direction
     }
 
     public void TakeDamage(float damage)
@@ -155,12 +143,6 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         currentLives--;
 
-        // Update lives UI
-        if (livesTextUI != null)
-        {
-            livesTextUI.UpdateLives(currentLives);
-        }
-
         Debug.Log($"Player died! Lives remaining: {currentLives}");
 
         // Play death animation
@@ -211,16 +193,17 @@ public class PlayerController : MonoBehaviour
         isDying = false;
 
         // Reset to original scale facing right
-        if (spriteRenderer != null) spriteRenderer.flipX = false;
-
+        transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
 
         Debug.Log($"Player respawned at checkpoint. Health: {currentHealth}, Lives: {currentLives}");
     }
 
     private void GameOver()
     {
-        SceneManager.LoadScene(6); //opens gameover scene 
-
+        Debug.Log("Game Over! No lives remaining.");
+        // You can add game over screen logic here
+        // For now, just reload the current scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
     // Called by PuzzleManager when player makes too many mistakes

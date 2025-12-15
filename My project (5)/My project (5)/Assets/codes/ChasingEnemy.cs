@@ -43,7 +43,6 @@ public class ChasingEnemy : MonoBehaviour
                 StartChasing();
             }
             ChasePlayer();
-            
         }
         else if (isChasing)
         {
