@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
     private bool isDying = false;
 
     //UI heart bonus
-    public LivesTextUI livesTextUI;  
-
+    public TMP_Text livesTextUI;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,7 +52,7 @@ public class PlayerController : MonoBehaviour
         // Initialize lives UI
         if (livesTextUI != null)
         {
-            livesTextUI.UpdateLives(currentLives);
+            livesTextUI.text=""+currentLives;
         }
 
         Debug.Log($"Player original scale: {originalScale}");
@@ -158,7 +157,7 @@ public class PlayerController : MonoBehaviour
         // Update lives UI
         if (livesTextUI != null)
         {
-            livesTextUI.UpdateLives(currentLives);
+            livesTextUI.text=""+currentLives;
         }
 
         Debug.Log($"Player died! Lives remaining: {currentLives}");
@@ -233,8 +232,9 @@ public class PlayerController : MonoBehaviour
     public void AddLife()
     {
         currentLives++;
-        Debug.Log($"Life added! Total lives: {currentLives}");
-    }
+        if (livesTextUI != null)
+        livesTextUI.text = " " + currentLives;
+        }
 
     // Public method to get facing direction (useful for other scripts)
     public bool IsFacingRight()
