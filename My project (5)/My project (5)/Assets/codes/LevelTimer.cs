@@ -58,7 +58,7 @@ public class LevelTimer : MonoBehaviour
 
     void TimeOver()
     {
-        SceneManager.LoadScene(6); 
+        SceneManager.LoadScene(5); 
     }
 
     public void AddTime(float amount)

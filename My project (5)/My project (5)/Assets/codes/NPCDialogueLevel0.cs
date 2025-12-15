@@ -19,7 +19,7 @@ public class NPCDialogueLevel0 : MonoBehaviour
             "ECHO : System Breach detected ... you were sucked inside this corrupted world  ",
             "Echo : To return, you must reach the Core Server and fight the mastermind ",
             "Ava: How ? ",
-            "Echo : Use the keys as image and to move forward. Ava,This is where it begins.” ",}; //specify the dialogue between the player and the character
+            "Echo : Use the keys as the image and  move forward. Ava,This is where it begins.” ",}; //specify the dialogue between the player and the character
             dialogueManager.SetSentences(dialogue); //set the sentences array in the Dialogue script to above array 
             dialogueManager.StartCoroutine(dialogueManager.TypeDialogue()); //start the coroutine of TypeDialogue), which in turn starts the dialogue
             Destroy (GetComponent<BoxCollider2D>(), 5f); //destroys the NPC's triggered box collider so

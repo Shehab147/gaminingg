@@ -225,6 +225,8 @@ public class PlayerController : MonoBehaviour
         // Reset to original scale facing right
         if (spriteRenderer != null) spriteRenderer.flipX = false;
 
+        
+
 
         Debug.Log($"Player respawned at checkpoint. Health: {currentHealth}, Lives: {currentLives}");
     }
