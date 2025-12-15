@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Store the original scale to prevent shrinking
-        originalScale = transform.localScale;
+       
         lastCheckpoint = transform.position; // Set initial checkpoint to starting position
 
         Debug.Log($"Player original scale: {originalScale}");
@@ -97,17 +97,12 @@ public class PlayerController : MonoBehaviour
 
     void UpdateFacingDirection(float moveInput)
     {
-        if (moveInput > 0.1f) // Moving right
-        {
-            // Use original scale but flip X to positive
-            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-        }
-        else if (moveInput < -0.1f) // Moving left
-        {
-            // Use original scale but flip X to negative
-            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-        }
-        // If moveInput is 0, maintain current facing direction
+        if (spriteRenderer == null) return;
+        if (moveInput < -0.1f)        // moving left
+          spriteRenderer.flipX = true;
+        else if (moveInput > 0.1f)    // moving right
+            spriteRenderer.flipX = false;
+    
     }
 
     public void TakeDamage(float damage)
@@ -213,7 +208,8 @@ public class PlayerController : MonoBehaviour
         isDying = false;
 
         // Reset to original scale facing right
-        transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        if (spriteRenderer != null) spriteRenderer.flipX = false;
+
 
         Debug.Log($"Player respawned at checkpoint. Health: {currentHealth}, Lives: {currentLives}");
     }

@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class SpecterBoss : MonoBehaviour
 {
-    public float maxHealth = 100f;
+    public float maxHealth = 100f; 
     public Image greenbar;     // assign UI Slider
     public Image yellowbar;     // YellowBar (shows under green)
 
@@ -11,12 +13,21 @@ public class SpecterBoss : MonoBehaviour
 
     public float contactDamage = 20f;
 
+    // follow settings
+    public Transform player;      
+    public float moveSpeed = 3f;  // how fast specter moves
+    public float stopDistance = 1.5f; // how close it gets to player
+    public Rigidbody2D rb; // used so movement is according to physics 
+    private SpriteRenderer sr; // used for flipping 
+
     float currentHealth;
     bool isActive = false;
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; 
+
+         rb = GetComponent<Rigidbody2D>(); //gets rigidbody from object which is specter
 
         // hide bar until fight starts
         greenbar.gameObject.SetActive(false);
@@ -31,7 +42,7 @@ public class SpecterBoss : MonoBehaviour
     }
 
     void Update(){
-    if (!isActive) return;  // exit early if boss not active
+    if (!isActive) return;  // skip if boss not active
 
 
         //show only the appropiate bar based on health
@@ -96,6 +107,7 @@ public class SpecterBoss : MonoBehaviour
     {
         // play death animation, end game, etc.
         Destroy(gameObject);
+        SceneManager.LoadScene(7);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -106,4 +118,39 @@ public class SpecterBoss : MonoBehaviour
             player.TakeDamage(contactDamage);
         }
     }
+    void FixedUpdate()
+{
+    if (!isActive) return; //dont move if boss isnt activated
+    if (player == null) return; //if no target is assigned ,it doesnt move 
+    // FLIP based on player's X direction (NOT Y)
+    // This stays correct even while the player jumps. [file:8]
+       
+        if (sr != null)
+        {
+            // If player is to the RIGHT of boss, face right; else face left.
+            
+            if (player.position.x > transform.position.x)
+                sr.flipX = false;
+            else
+                sr.flipX = true;
+        }
+        //follow 
+
+    float dist = Vector2.Distance(rb.position, player.position); ////measure distance to player
+    
+    if (dist > stopDistance)// if player is close enough ,stop horizontal movement 
+    {
+        if (rb != null)
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+        return;
+    }// Calculate the next position toward the player
+        Vector2 newPos = Vector2.MoveTowards(transform.position,player.position,moveSpeed * Time.fixedDeltaTime);  // FixedUpdate uses fixedDeltaTime
+
+        // Move the Rigidbody if present (more physics-friendly than transform-only movement)
+        if (rb != null)
+            rb.MovePosition(newPos);
+        else
+            transform.position = newPos; // fallback if no Rigidbody2D exists
+    }
+
 }

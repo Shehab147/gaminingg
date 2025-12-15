@@ -4,6 +4,7 @@ public class BossActivator : MonoBehaviour
 {
 
     public SpecterBoss specter;
+    //public GameObject specprefab;
     public Transform spawnPoint;
 
 
@@ -13,6 +14,7 @@ public class BossActivator : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
+            //Instantiate(specter, spawnPoint.transform.position, spawnPoint.transform.rotation);
             specter.ActivateBoss(); // show bar and allow damage
             Destroy(gameObject);    // remove activator so it runs once
         }
