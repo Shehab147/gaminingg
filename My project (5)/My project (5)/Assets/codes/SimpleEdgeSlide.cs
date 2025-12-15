@@ -7,7 +7,7 @@ public class SimpleEdgeSlide : MonoBehaviour
     public float slideSpeedMultiplier = 1f;
     public Vector2 slideDirection = Vector2.right;
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -20,14 +20,11 @@ public class SimpleEdgeSlide : MonoBehaviour
                 float fallSpeed = Mathf.Abs(playerRb.velocity.y);
                 float slideSpeed = fallSpeed * slideSpeedMultiplier;
 
-                // Apply horizontal slide while keeping player grounded
-                playerRb.velocity = new Vector2(slideDirection.x * slideSpeed, playerRb.velocity.y);
-                
-                // Disable jumping but allow walking
-                if (player != null)
-                {
-                    player.canJump = false;
-                }
+                // Apply slide
+                playerRb.velocity = new Vector2(slideDirection.x * slideSpeed, 0f);
+                player.enabled = false;
+
+                StartCoroutine(ReenablePlayer(player));
             }
         }
     }
@@ -39,8 +36,18 @@ public class SimpleEdgeSlide : MonoBehaviour
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.canJump = true;
+                player.enabled = true;
             }
+        }
+    }
+
+    IEnumerator ReenablePlayer(PlayerController player)
+    {
+        // Safety measure: re-enable player after 3 seconds if still on platform
+        yield return new WaitForSeconds(3f);
+        if (player != null)
+        {
+            player.enabled = true;
         }
     }
 }

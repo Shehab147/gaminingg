@@ -10,9 +10,6 @@ public class TrophyController : MonoBehaviour
     public float followSpeed = 3f;
     public float floatHeight = 0.5f;
     public float floatSpeed = 2f;
-    private AudioSource audioSource;
-private bool soundPlayed = false;
-
 
     [Header("Gate Reference")]
     public Animator gateAnimator;
@@ -25,15 +22,11 @@ private bool soundPlayed = false;
     private float originalY;
 
     void Start()
-{
-    initialPosition = transform.position;
-
-    if (tableTarget != null)
-        originalY = tableTarget.position.y;
-
-    audioSource = GetComponent<AudioSource>();
-}
-
+    {
+        initialPosition = transform.position;
+        if (tableTarget != null)
+            originalY = tableTarget.position.y;
+    }
 
     void Update()
     {
@@ -56,21 +49,13 @@ private bool soundPlayed = false;
         }
     }
 
-   void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.CompareTag("Player") && !isFollowing && !isOnTable)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // 🔊 Play sound once
-        if (!soundPlayed && audioSource != null)
+        if (other.CompareTag("Player") && !isFollowing && !isOnTable)
         {
-            audioSource.Play();
-            soundPlayed = true;
+            StartFollowing();
         }
-
-        StartFollowing();
     }
-}
-
 
     void StartFollowing()
     {
