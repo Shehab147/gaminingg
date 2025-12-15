@@ -20,6 +20,9 @@ public class TrophyController2 : MonoBehaviour
     public float moveDuration = 2f; // Duration of movement in seconds
     public AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1); // Smooth easing
 
+    [Header("Audio Settings")]
+    public AudioClip pickupSound;
+
     public bool isFollowing = false;
     public bool isOnTable = false;
 
@@ -27,6 +30,7 @@ public class TrophyController2 : MonoBehaviour
     private float originalY;
     private Vector3 targetObjectStartPosition;
     private Coroutine moveCoroutine;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -37,6 +41,13 @@ public class TrophyController2 : MonoBehaviour
         if (targetObject != null)
         {
             targetObjectStartPosition = targetObject.position;
+        }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
         }
     }
 
@@ -66,11 +77,17 @@ public class TrophyController2 : MonoBehaviour
         }
     }
 
-    void StartFollowing()
+ void StartFollowing()
     {
         isFollowing = true;
+        
+        if (pickupSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(pickupSound);
+        }
+        
         Debug.Log("Trophy started following player!");
-    }
+    } 
 
     bool IsPlayerNearTable()
     {

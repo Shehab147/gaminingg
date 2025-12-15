@@ -49,10 +49,23 @@ public class PlayerController : MonoBehaviour
        
         lastCheckpoint = transform.position; // Set initial checkpoint to starting position
 
+        // Find lives UI if not assigned
+        if (livesTextUI == null)
+        {
+            GameObject heartTextObj = GameObject.Find("hearttext");
+            if (heartTextObj != null)
+                livesTextUI = heartTextObj.GetComponent<TMP_Text>();
+        }
+
         // Initialize lives UI
         if (livesTextUI != null)
         {
-            livesTextUI.text=""+currentLives;
+            livesTextUI.text = "x " + currentLives;
+            Debug.Log("Lives UI initialized: x " + currentLives);
+        }
+        else
+        {
+            Debug.LogWarning("Lives UI Text not found! Looking for 'hearttext' GameObject.");
         }
 
         Debug.Log($"Player original scale: {originalScale}");
@@ -157,7 +170,7 @@ public class PlayerController : MonoBehaviour
         // Update lives UI
         if (livesTextUI != null)
         {
-            livesTextUI.text=""+currentLives;
+            livesTextUI.text = "x " + currentLives;
         }
 
         Debug.Log($"Player died! Lives remaining: {currentLives}");
@@ -233,8 +246,8 @@ public class PlayerController : MonoBehaviour
     {
         currentLives++;
         if (livesTextUI != null)
-        livesTextUI.text = " " + currentLives;
-        }
+            livesTextUI.text = "x " + currentLives;
+    }
 
     // Public method to get facing direction (useful for other scripts)
     public bool IsFacingRight()

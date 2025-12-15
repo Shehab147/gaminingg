@@ -18,7 +18,11 @@ public class SimpleFlyingEnemy : MonoBehaviour
     public bool useTrigger = true; // Use trigger collider for damage
     public bool useCollision = true; // Use collision for damage
 
+    [Header("Audio Settings")]
+    public AudioClip hitSound;
+
     private Transform currentTarget;
+    private AudioSource audioSource;
     private bool isMoving = true;
     private SpriteRenderer spriteRenderer;
     private bool canDamage = true;
@@ -26,6 +30,15 @@ public class SimpleFlyingEnemy : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
+        
+        // Add AudioSource if not present
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
+        
         currentTarget = pointB; // Start by moving to point B
 
         Debug.Log("Flying Enemy initialized. Damage: " + damage);
@@ -124,6 +137,7 @@ public class SimpleFlyingEnemy : MonoBehaviour
         {
             Debug.Log("Flying enemy dealing " + damage + " damage to player!");
             player.TakeDamage(damage);
+            PlayHitSound();
             StartCoroutine(DamageCooldown());
         }
     }
@@ -133,6 +147,14 @@ public class SimpleFlyingEnemy : MonoBehaviour
         canDamage = false;
         yield return new WaitForSeconds(attackCooldown);
         canDamage = true;
+    }
+
+    void PlayHitSound()
+    {
+        if (hitSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
     }
 
     void OnDrawGizmosSelected()

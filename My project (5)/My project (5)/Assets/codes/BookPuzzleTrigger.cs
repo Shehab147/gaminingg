@@ -46,9 +46,11 @@ void Start()
  public void ClosePuzzle()
 {
     PuzzleTimer timer = puzzlePanel.GetComponent<PuzzleTimer>();
-    if (timer != null)
+    Debug.Log("Closing puzzle");
+    if (timer != null){
+    Debug.Log("Stopping timer");
         timer.StopTimer();
-
+    }
     puzzlePanel.SetActive(false);
     Time.timeScale = 1f;
 }

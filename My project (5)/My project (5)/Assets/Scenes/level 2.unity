@@ -8324,7 +8324,6 @@ MonoBehaviour:
   playerMountOffset: 0.5
   interactPrompt: {fileID: 0}
   slideParticles: {fileID: 0}
-  cooldownTime: 2
 --- !u!61 &645652883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11214,7 +11213,7 @@ PrefabInstance:
     - target: {fileID: 7318259485321906353, guid: 68f4ff02e0b856e4d897d426da34bada, type: 3}
       propertyPath: livesTextUI
       value: 
-      objectReference: {fileID: 400202332}
+      objectReference: {fileID: 1623645986}
     - target: {fileID: 7318259485321906357, guid: 68f4ff02e0b856e4d897d426da34bada, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -14879,6 +14878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52bcd21fef21a0499ed16960086c6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSound: {fileID: 0}
+  volume: 1
+  playOnlyOnce: 1
 --- !u!61 &1075712898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25601,6 +25603,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52bcd21fef21a0499ed16960086c6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSound: {fileID: 0}
+  volume: 1
+  playOnlyOnce: 1
 --- !u!61 &1948570946
 BoxCollider2D:
   m_ObjectHideFlags: 0
