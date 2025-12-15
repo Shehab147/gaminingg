@@ -12,6 +12,8 @@ public class NavigationController : MonoBehaviour
     }
     public void onClickQuit(){
         
+        Debug.Log("Quit clicked");
+
         Application.Quit(); //Exit the game build.
         
         }
