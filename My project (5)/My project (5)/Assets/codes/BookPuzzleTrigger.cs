@@ -19,6 +19,15 @@ public class BookPuzzleTrigger : MonoBehaviour
     [Header("UI Prompt")]
     public GameObject interactPrompt;
 
+    void Start()
+    {
+        // Ensure puzzle UI is hidden at the start
+        if (puzzleUI != null)
+        {
+            puzzleUI.SetActive(false);
+        }
+    }
+
     void Update()
     {
         // Check if player is in range and presses E
@@ -72,6 +81,12 @@ public class BookPuzzleTrigger : MonoBehaviour
     {
         isBookOpen = false;
 
+        // Hide puzzle UI
+        if (puzzleUI != null)
+        {
+            puzzleUI.SetActive(false);
+        }
+
         // Play close animation
         if (bookAnimator != null)
         {
@@ -103,6 +118,13 @@ public class BookPuzzleTrigger : MonoBehaviour
             trapDoor.OpenTrapDoor();
             Debug.Log("Trap door opened with 1-second delay!");
         }
+    }
+
+    // Called by PuzzleTimer when time runs out
+    public void RestartLevel()
+    {
+        Debug.Log("Time's up! Restarting level...");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -212,6 +212,13 @@ public class PlayerController : MonoBehaviour
         TakeDamage(100f); // Instant death
     }
 
+    // Public method to add a life (called by Heart pickup)
+    public void AddLife()
+    {
+        currentLives++;
+        Debug.Log($"Life added! Total lives: {currentLives}");
+    }
+
     // Public method to get facing direction (useful for other scripts)
     public bool IsFacingRight()
     {
