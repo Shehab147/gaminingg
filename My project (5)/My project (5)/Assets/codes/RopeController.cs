@@ -17,12 +17,8 @@ public class RopeController : MonoBehaviour
     public GameObject interactPrompt;
     public ParticleSystem slideParticles;
 
-    [Header("Cooldown Settings")]
-    public float cooldownTime = 2f; // Time before rope can be used again
-
     private bool playerInRange = false;
     private bool isSliding = false;
-    private float lastUseTime = -999f; // Track last use time
     private Vector3 slideDirection;
     private float slideProgress = 0f;
     private PlayerController playerController;
@@ -46,8 +42,8 @@ public class RopeController : MonoBehaviour
 
     void Update()
     {
-        // Check for interaction input - prevent spam clicking with cooldown
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !isSliding && CanUseRope())
+        // Check for interaction input
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && !isSliding)
         {
             StartSliding();
         }
@@ -58,27 +54,18 @@ public class RopeController : MonoBehaviour
             SlidePlayer();
         }
 
-        // Update interact prompt - only show if rope is ready
+        // Update interact prompt
         if (interactPrompt != null)
         {
-            interactPrompt.SetActive(playerInRange && !isSliding && CanUseRope());
+            interactPrompt.SetActive(playerInRange && !isSliding);
         }
-    }
-
-    bool CanUseRope()
-    {
-        return Time.time >= lastUseTime + cooldownTime;
     }
 
     void StartSliding()
     {
         if (player == null || startPoint == null || endPoint == null) return;
 
-        // Prevent multiple activations during cooldown
-        if (!CanUseRope()) return;
-
         isSliding = true;
-        lastUseTime = Time.time; // Record use time for cooldown
         slideProgress = 0f;
 
         // Disable player control

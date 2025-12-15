@@ -5740,6 +5740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1239327538}
   - component: {fileID: 1239327537}
+  - component: {fileID: 1239327539}
   m_Layer: 0
   m_Name: 1764154716073_133
   m_TagString: Untagged
@@ -5814,6 +5815,19 @@ Transform:
   m_Father: {fileID: 1588111984}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1239327539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239327536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da50b63ba1e106428af4c0a5094238a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzlePanel: {fileID: 0}
 --- !u!1 &1241924370
 GameObject:
   m_ObjectHideFlags: 0
@@ -9967,6 +9981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52bcd21fef21a0499ed16960086c6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcSound: {fileID: 0}
+  volume: 1
+  playOnlyOnce: 1
 --- !u!61 &2073573323
 BoxCollider2D:
   m_ObjectHideFlags: 0
