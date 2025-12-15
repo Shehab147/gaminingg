@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private bool isDying = false;
 
     //UI heart bonus
-    public TMP_Text livesText;  
+    public LivesTextUI livesTextUI;  
 
     void Start()
     {
@@ -50,6 +50,12 @@ public class PlayerController : MonoBehaviour
        
         lastCheckpoint = transform.position; // Set initial checkpoint to starting position
 
+        // Initialize lives UI
+        if (livesTextUI != null)
+        {
+            livesTextUI.UpdateLives(currentLives);
+        }
+
         Debug.Log($"Player original scale: {originalScale}");
     }
 
@@ -57,16 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead || isDying)
         {
-            // Update UI even when dead so it shows correct count
-            if (livesText != null)
-            {
-                livesText.text = "  " + currentLives;
-            }
             return;
-        }
-                if (livesText != null)
-        {
-            livesText.text = "  " + currentLives;
         }
 
 
@@ -157,6 +154,12 @@ public class PlayerController : MonoBehaviour
         isDying = true;
         isDead = true;
         currentLives--;
+
+        // Update lives UI
+        if (livesTextUI != null)
+        {
+            livesTextUI.UpdateLives(currentLives);
+        }
 
         Debug.Log($"Player died! Lives remaining: {currentLives}");
 
