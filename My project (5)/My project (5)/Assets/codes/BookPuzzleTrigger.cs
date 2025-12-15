@@ -44,10 +44,18 @@ if (timer != null)
 }
 
 
-    // 🔘 YES button
+    // 🔘 NO button
     public void RestartLevel()
     {
-        Time.timeScale = 1f; // unpause FIRST
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Respawn player (decrease life, etc) - handled by PuzzleManager on restart level function
+        Time.timeScale = 1f;
+        
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player != null)
+        {
+            player.DieFromPuzzle();
+        }
+        
+        ClosePuzzle();
     }
 }
