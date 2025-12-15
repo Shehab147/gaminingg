@@ -4,25 +4,35 @@ using UnityEngine.SceneManagement;
 public class BookPuzzleTrigger : MonoBehaviour
 {
     public GameObject puzzlePanel;
+    private bool hasTriggered = false;
+private AudioSource audioSource;
+void Start()
+{
+    if (puzzlePanel != null)
+        puzzlePanel.SetActive(false);
 
-    void Start()
-    {
-        if (puzzlePanel != null)
-            puzzlePanel.SetActive(false);
-    }
+    audioSource = GetComponent<AudioSource>();
+}
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            puzzlePanel.SetActive(true);
-Time.timeScale = 0f;
+    if (other.CompareTag("Player") && !hasTriggered)
+{
+    hasTriggered = true;
 
-PuzzleTimer timer = puzzlePanel.GetComponent<PuzzleTimer>();
-if (timer != null)
-    timer.StartTimer();
+    // 🔊 Play puzzle sound
+    if (audioSource != null)
+        audioSource.Play();
 
-        }
+    puzzlePanel.SetActive(true);
+    Time.timeScale = 0f;
+
+    PuzzleTimer timer = puzzlePanel.GetComponent<PuzzleTimer>();
+    if (timer != null)
+        timer.StartTimer();
+}
+
     }
 
     // 🔹 REQUIRED by PuzzleManager & PuzzleManager_2
@@ -56,6 +66,7 @@ if (timer != null)
             player.DieFromPuzzle();
         }
         
+        hasTriggered = false; // Reset trigger so puzzle can be reopened after respawn
         ClosePuzzle();
     }
 }
