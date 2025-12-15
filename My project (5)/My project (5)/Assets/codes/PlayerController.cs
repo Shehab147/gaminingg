@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;//to load gameover scene
 using UnityEngine.UI;        
-using TMPro;//added for heart bonus
+using TMPro;//added for heart bonuss
 
 public class PlayerController : MonoBehaviour
 {
