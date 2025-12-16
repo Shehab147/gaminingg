@@ -65,7 +65,8 @@ public class TrapDoorController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !isOpen)
         {
-            Debug.Log("Player standing on trap door");
+            Debug.Log("Player standing on trap door - opening now!");
+            OpenTrapDoor();
         }
     }
 }
