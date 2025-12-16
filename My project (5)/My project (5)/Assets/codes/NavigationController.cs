@@ -19,7 +19,7 @@ public class NavigationController : MonoBehaviour
         }
     public void onClickRetry()
     {
-        SceneManager.LoadScene(4); // Load Level 3 
+        SceneManager.LoadScene(5); // Load Level 3 
     }
     public void onClickRestartLevel()
     {
