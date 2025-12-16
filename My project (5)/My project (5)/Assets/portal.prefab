@@ -71,9 +71,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76755d69000e5b44b81c1202d5c7ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelName: level 1
+  nextLevelName: level 2
   nextLevelIndex: -1
   transitionDelay: 0.5
+  playCutsceneBeforeLevel: 1
+  cutsceneSceneName: Leve2CutScene
   portalEffect: {fileID: 0}
   portalAnimator: {fileID: 0}
   portalSound: {fileID: 0}
+  maxLives: 3
+  livesUI: {fileID: 0}

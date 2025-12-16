@@ -7,6 +7,10 @@ public class PortalController : MonoBehaviour
     public string nextLevelName; // Enter exact scene name (e.g., "Level2")
     public int nextLevelIndex = -1; // Alternative: Use build index
     public float transitionDelay = 1f;
+    
+    [Header("Cutscene Settings")]
+    public bool playCutsceneBeforeLevel = false; // Enable to play video cutscene
+    public string cutsceneSceneName = "Leve2CutScene"; // Name of cutscene scene
 
     [Header("Visual Effects")]
     public ParticleSystem portalEffect;
@@ -83,8 +87,13 @@ if (livesUI != null)
         
         yield return new WaitForSeconds(waitTime);
 
-        // Load next level
-        if (!string.IsNullOrEmpty(nextLevelName))
+        // Load cutscene or next level
+        if (playCutsceneBeforeLevel && !string.IsNullOrEmpty(cutsceneSceneName))
+        {
+            Debug.Log($"Loading cutscene: {cutsceneSceneName}");
+            SceneManager.LoadScene(cutsceneSceneName);
+        }
+        else if (!string.IsNullOrEmpty(nextLevelName))
         {
             SceneManager.LoadScene(nextLevelName);
         }
